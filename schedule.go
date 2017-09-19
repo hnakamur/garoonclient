@@ -65,9 +65,9 @@ func (r ScheduleGetEventsByTargetRequest) MarshalXML(e *xml.Encoder, start xml.S
 	p := struct {
 		Start    string  `xml:"start,attr"`
 		End      string  `xml:"end,attr"`
-		User     *baseID `xml:"user,omitmpty"`
-		Group    *baseID `xml:"group,omitmpty"`
-		Facility *baseID `xml:"facility,omitmpty"`
+		User     *baseID `xml:"user,omitempty"`
+		Group    *baseID `xml:"group,omitempty"`
+		Facility *baseID `xml:"facility,omitempty"`
 	}{
 		Start: r.Start,
 		End:   r.End,
