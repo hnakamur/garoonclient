@@ -3,7 +3,6 @@ package garoonclient
 import (
 	"encoding/xml"
 	"io"
-	"log"
 )
 
 const scheduleURL = "/cbpapi/schedule/api"
@@ -72,7 +71,6 @@ func (r ScheduleGetEventsByTargetRequest) MarshalXML(e *xml.Encoder, start xml.S
 		Start: r.Start,
 		End:   r.End,
 	}
-	log.Printf("r=%+v", r)
 	if r.User != "" {
 		p.User = &baseID{ID: r.User}
 	} else if r.Group != "" {
@@ -80,7 +78,6 @@ func (r ScheduleGetEventsByTargetRequest) MarshalXML(e *xml.Encoder, start xml.S
 	} else if r.Facility != "" {
 		p.Facility = &baseID{ID: r.Facility}
 	}
-	log.Printf("p=%+v", p)
 	return e.Encode(buildRequestStruct(
 		r.Header,
 		"ScheduleGetEventsByTarget",
