@@ -28,16 +28,29 @@ type ScheduleGetEventsByTargetResponse struct {
 }
 
 type ScheduleEvent struct {
-	ID          string   `xml:"id,attr"`
-	EventType   string   `xml:"event_type,attr"`
-	PublicType  string   `xml:"public_type,attr"`
-	Detail      string   `xml:"detail,attr"`
-	Description string   `xml:"description,attr"`
-	Version     string   `xml:"version,attr"`
-	Timezone    string   `xml:"timezone,attr"`
-	EndTimezone string   `xml:"end_timezone,attr"`
-	AllDay      string   `xml:"all_day,attr"`
-	Members     []Member `xml:"members>member"`
+	ID          string                  `xml:"id,attr"`
+	EventType   string                  `xml:"event_type,attr"`
+	PublicType  string                  `xml:"public_type,attr"`
+	Detail      string                  `xml:"detail,attr"`
+	Description string                  `xml:"description,attr"`
+	Version     string                  `xml:"version,attr"`
+	Timezone    string                  `xml:"timezone,attr"`
+	EndTimezone string                  `xml:"end_timezone,attr"`
+	AllDay      string                  `xml:"all_day,attr"`
+	Members     []Member                `xml:"members>member"`
+	DateTimes   []ScheduleEventDateTime `xml:"when>datetime"`
+	Dates       []ScheduleEventDate     `xml:"when>date"`
+}
+
+type ScheduleEventDateTime struct {
+	Start        string `xml:"start,attr"`
+	End          string `xml:"end,attr"`
+	FacilityCode string `xml:"facility_code,attr"`
+}
+
+type ScheduleEventDate struct {
+	Start string `xml:"start,attr"`
+	End   string `xml:"end,attr"`
 }
 
 type Member struct {
